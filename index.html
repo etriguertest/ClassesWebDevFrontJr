@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curriculum - Erick Adiel Trigueros Jerez</title>
+  
+  <!-- Fuente tipográfica Inter y Fira Code -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Enlace al archivo CSS externo -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ENCABEZADO / HERO -->
+  <header class="hero">
+    <div class="container">
+      <div class="terminal-prompt">
+        <span>etriguertest@frontend:~$ whoami</span>
+      </div>
+      
+      <h1 class="hero-name">Erick Adiel Trigueros Jerez</h1>
+      
+      <p class="hero-subtitle">
+        Desarrollador Frontend Jr. — construyo interfaces claras, rápidas y que funcionan igual de bien en un teléfono que en una pantalla grande.
+      </p>
+      
+      <p class="hero-location">
+        Santa ana, El Salvador · Disponible para trabajo remoto o híbrido
+      </p>
+      
+      <div class="hero-actions">
+        <a href="#proyectos" class="btn btn-primary">Ver proyectos</a>
+        <a href="mailto:etriguertest@gmail.com" class="btn btn-secondary">Escribirme</a>
+      </div>
+      
+      <div class="hero-social">
+        <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:etriguertest@gmail.com">etriguertest@gmail.com</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="main-content">
+    
+    <!-- SECCIÓN SOBRE MÍ -->
+    <section class="section about-section">
+      <div class="container about-container">
+        <div class="profile-image-wrapper">
+          <img src="/images/profile.png" alt="Fotografía de Erick Trigueros" class="profile-img">
+        </div>
+        <div class="about-text">
+          <h2 class="section-title">Sobre mí</h2>
+          <p>
+            Vengo del diseño gráfico y el marketing digital, así que entiendo tanto el "cómo se ve" como el "por qué se ve así". Después de años maquetando en herramientas de diseño, decidí aprender a construirlo yo misma en código.
+          </p>
+          <p>
+            Hoy estoy terminando mi formación como Web Developer Frontend, enfocado en HTML semántico, CSS moderno (Flexbox y Grid) y buenas prácticas de accesibilidad. Me interesa el detalle: espaciados consistentes, contraste correcto, y que una página se sienta tan cuidada en el código como en la pantalla.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN HABILIDADES -->
+    <section class="section skills-section">
+      <div class="container">
+        <h2 class="section-title">Habilidades</h2>
+        
+        <div class="skills-grid">
+          <!-- Columna 1 -->
+          <div class="skills-column col-teal">
+            <h3 class="column-title">LENGUAJES Y HERRAMIENTAS</h3>
+            <div class="tags-group">
+              <div class="tags-row">
+                <span class="tag">HTML5</span>
+                <span class="tag">CSS3</span>
+              </div>
+              <div class="tags-row">
+                <span class="tag">Git & GitHub</span>
+                <span class="tag">VS Code</span>
+              </div>
+              <div class="tags-row">
+                <span class="tag">JavaScript (en formación)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Columna 2 -->
+          <div class="skills-column col-teal">
+            <h3 class="column-title">DISEÑO Y MAQUETADO</h3>
+            <div class="tags-group">
+              <div class="tags-row">
+                <span class="tag">Flexbox</span>
+                <span class="tag">CSS Grid</span>
+              </div>
+              <div class="tags-row">
+                <span class="tag">Diseño responsivo</span>
+              </div>
+              <div class="tags-row">
+                <span class="tag">De Figma a código</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Columna 3 -->
+          <div class="skills-column col-teal">
+            <h3 class="column-title">HABILIDADES BLANDAS</h3>
+            <div class="tags-group">
+              <div class="tags-row">
+                <span class="tag">Atención al detalle</span>
+              </div>
+              <div class="tags-row">
+                <span class="tag">Comunicación clara</span>
+              </div>
+              <div class="tags-row">
+                <span class="tag">Trabajo en equipo</span>
+              </div>
+              <div class="tags-row">
+                <span class="tag">Aprendizaje autónomo</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN PROYECTOS -->
+    <section class="section projects-section" id="proyectos">
+      <div class="container">
+        <div class="projects-header">
+          <h2 class="section-title">Proyectos</h2>
+          <span class="projects-subtitle">Prácticas del bootcamp, ya subidas y navegables</span>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Tarjeta 1 -->
+          <article class="project-card border-teal">
+            <h3 class="project-title">Portafolio personal</h3>
+            <p class="project-description">
+              Este mismo sitio: estructura semántica en HTML5 y layout con Flexbox y Grid, sin frameworks.
+            </p>
+          </article>
+
+          <!-- Tarjeta 2 -->
+          <article class="project-card border-yellow">
+            <h3 class="project-title">Landing page — cafetería ficticia</h3>
+            <p class="project-description">
+              Réplica de una landing real a partir de una captura, cuidando jerarquía visual y espaciado con Emmet + CSS puro.
+            </p>
+          </article>
+
+          <!-- Tarjeta 3 -->
+          <article class="project-card border-dark">
+            <h3 class="project-title">Galería responsiva de productos</h3>
+            <p class="project-description">
+              Grilla de tarjetas con <code>repeat(auto-fit, minmax())</code> que se reacomoda sola entre celular y escritorio.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN MI CAMINO (LÍNEA DE TIEMPO) -->
+    <section class="section timeline-section">
+      <div class="container">
+        <h2 class="section-title">Mi camino</h2>
+        
+        <div class="timeline">
+          <!-- Módulo 1 -->
+          <div class="timeline-item dot-teal">
+            <span class="timeline-module">Módulo 1</span>
+            <h3 class="timeline-title">Fundamentos: HTML, CSS y Bootstrap</h3>
+            <p class="timeline-description">Estructura semántica, Flexbox, Grid y mi primera landing page responsiva.</p>
+          </div>
+
+          <!-- Módulo 2 -->
+          <div class="timeline-item dot-yellow">
+            <span class="timeline-module">Módulo 2 — en curso</span>
+            <h3 class="timeline-title">Fundamentos de JavaScript</h3>
+            <p class="timeline-description">Lógica, funciones, arrays y objetos para empezar a darle comportamiento a mis páginas.</p>
+          </div>
+
+          <!-- Módulo 3 -->
+          <div class="timeline-item dot-teal">
+            <span class="timeline-module">Módulo 3</span>
+            <h3 class="timeline-title">Git, GitHub y JavaScript avanzado</h3>
+            <p class="timeline-description">Control de versiones en equipo, manipulación del DOM y consumo de APIs reales.</p>
+          </div>
+
+          <!-- Módulo 4 -->
+          <div class="timeline-item dot-teal">
+            <span class="timeline-module">Módulo 4</span>
+            <h3 class="timeline-title">React</h3>
+            <p class="timeline-description">Componentes, estado y una aplicación final para cerrar el bootcamp.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PIE DE PÁGINA / FOOTER -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-cta">
+        <h2 class="footer-title">¿Buscas sumar a alguien a tu equipo de frontend?</h2>
+        <p class="footer-text">Estoy activamente en búsqueda de mi primera oportunidad como desarrolladora.</p>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:etriguertest@gmail.com">etriguertest@gmail.com</a>
+        <a href="https://www.linkedin.com/in/erick-adiel-trigueros-jerez-303371122/" target="_blank" rel="noopener">linkedin.com/in/erick-adiel-trigueros-jerez-303371122</a>
+        <a href="https://github.com/etriguertest target="_blank" rel="noopener">github.com/etriguertest </a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

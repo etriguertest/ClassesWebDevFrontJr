@@ -1,0 +1,449 @@
+/* ===================================
+   RESET Y VARIABLES GLOBALES
+=================================== */
+:root {
+  --bg-dark-header: #0d1117;
+  --bg-light: #f4f6f9;
+  --bg-card: #ffffff;
+  
+  --text-dark: #1e293b;
+  --text-muted: #64748b;
+  --text-light: #f8fafc;
+  
+  --accent-yellow: #f59e0b;
+  --accent-yellow-hover: #d97706;
+  --accent-teal: #14b8a6;
+  --tag-bg: #ffffff;
+  --tag-border: #e2e8f0;
+  
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Fira Code', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ===================================
+   ENCABEZADO / HERO
+=================================== */
+.hero {
+  background-color: var(--bg-dark-header);
+  color: var(--text-light);
+  padding: 3.5rem 0 4rem 0;
+}
+
+.terminal-prompt {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: #f59e0b;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.hero-name {
+  font-size: 2.75rem;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+  font-size: 1.05rem;
+  color: #cbd5e1;
+  max-width: 620px;
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
+}
+
+.hero-location {
+  font-size: 0.925rem;
+  color: #94a3b8;
+  margin-bottom: 2rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.65rem 1.4rem;
+  font-size: 0.925rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--accent-yellow);
+  color: #000000;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-yellow-hover);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.hero-social {
+  display: flex;
+  gap: 1.25rem;
+  font-size: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.hero-social a {
+  color: #94a3b8;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.hero-social a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* ===================================
+   SECCIONES GENERALES
+=================================== */
+.main-content {
+  padding-top: 3.5rem;
+  padding-bottom: 2rem;
+}
+
+.section {
+  margin-bottom: 4rem;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+}
+
+/* ===================================
+   SOBRE MÍ
+=================================== */
+.about-container {
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+.profile-image-wrapper {
+  flex-shrink: 0;
+}
+
+.profile-img {
+  width: 170px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.about-text {
+  flex: 1;
+}
+
+.about-text .section-title {
+  margin-bottom: 1rem;
+}
+
+.about-text p {
+  color: #475569;
+  font-size: 0.975rem;
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+}
+
+.about-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* ===================================
+   HABILIDADES
+=================================== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.skills-column {
+  border-top: 3px solid var(--accent-teal);
+  padding-top: 0.75rem;
+}
+
+.column-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #334155;
+  letter-spacing: 0.03em;
+  margin-bottom: 1.25rem;
+}
+
+.tags-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.tags-row {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background-color: var(--tag-bg);
+  border: 1px solid var(--tag-border);
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  color: #334155;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+/* ===================================
+   PROYECTOS
+=================================== */
+.projects-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.projects-header .section-title {
+  margin-bottom: 0;
+}
+
+.projects-subtitle {
+  font-size: 0.875rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.project-card {
+  background-color: var(--bg-card);
+  padding: 1.5rem;
+  border-radius: 6px 6px 8px 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card.border-teal {
+  border-top: 3px solid var(--accent-teal);
+}
+
+.project-card.border-yellow {
+  border-top: 3px solid var(--accent-yellow);
+}
+
+.project-card.border-dark {
+  border-top: 3px solid #334155;
+}
+
+.project-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 0.85rem;
+  line-height: 1.3;
+}
+
+.project-description {
+  font-size: 0.875rem;
+  color: #475569;
+  line-height: 1.55;
+}
+
+.project-description code {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  background-color: #f1f5f9;
+  padding: 0.1rem 0.3rem;
+  border-radius: 4px;
+}
+
+/* ===================================
+   MI CAMINO (TIMELINE)
+=================================== */
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+  border-left: 2px solid #cbd5e1;
+  margin-left: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.timeline-item {
+  position: relative;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -2.45rem;
+  top: 0.2rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--bg-light);
+  border: 3px solid var(--accent-teal);
+}
+
+.timeline-item.dot-yellow::before {
+  border-color: var(--accent-yellow);
+}
+
+.timeline-module {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.timeline-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 0.3rem;
+}
+
+.timeline-description {
+  font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.5;
+}
+
+/* ===================================
+   PIE DE PÁGINA (FOOTER)
+=================================== */
+.footer {
+  background-color: var(--bg-dark-header);
+  color: var(--text-light);
+  padding: 4.5rem 0;
+  margin-top: 3rem;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+}
+
+.footer-cta {
+  max-width: 520px;
+}
+
+.footer-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  line-height: 1.25;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.footer-text {
+  font-size: 0.95rem;
+  color: #94a3b8;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.footer-links a {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 0.925rem;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* ===================================
+   DISEÑO RESPONSIVO
+=================================== */
+@media (max-width: 850px) {
+  .skills-grid,
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .about-container {
+    flex-direction: column;
+  }
+  
+  .profile-img {
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2.5rem;
+  }
+
+  .footer-links {
+    text-align: left;
+  }
+}
