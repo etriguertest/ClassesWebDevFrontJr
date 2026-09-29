@@ -1,0 +1,118 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #1b2430;
+    background-color: #f5f6f7;
+    line-height: 1.5;
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+header {
+    padding: 24px 20px;
+    border-bottom: 1px solid #dcdfe3;
+}
+
+header h1 {
+    font-size: 1.4rem;
+    margin-bottom: 8px; /* margin: 0 0 8px; */
+}
+
+header p {
+    color: #5b6572;
+}
+
+main {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+ /* Sección Flexbox: base móvil (apilado en una columna)*/
+.barra {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.barra a {
+    text-decoration: none;
+    color: #fff;
+    background-color: #3d5a80;
+    padding: 12px 16px;
+    /* padding: 20px; */
+    border-radius: 4px;
+    text-align: center;
+}
+
+
+/* Sección Grid: base móvil (apilado en una columna)*/
+.tarjetero {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* grid-template-columns: repeat(2, 1fr); */
+    /* grid-template-columns: 1fr 3fr; */
+    /* grid-template-rows: 1fr 2fr 3fr; */
+    gap: 12px
+}
+
+.tarjeta {
+    background-color: #2f6f4f;
+    color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* -----------------------------------------------------
+    Tamaño Tablet pantallas mayores que 768px
+   ----------------------------------------------------- 
+*/
+
+/* 
+Abajo de 768px son las reglas anteriores, mas de 768...
+... reglas que van en @media (min-width: 768px)
+*/ 
+@media (min-width: 768px) {
+    .barra {
+        flex-direction: row;
+    }
+
+    .barra a {
+        flex: 1;
+    }
+
+    .tarjetero {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+/* -----------------------------------------------------
+   Tamaño Escritorio(o monitor de computadora) pantallas mayores que 1024px
+   ----------------------------------------------------- 
+*/
+
+/* 
+Abajo de 1024px son las reglas anteriores, mas de 1024...
+... reglas que van en @media (min-width: 1024px)
+*/ 
+@media (min-width: 1024px) {
+    main{
+        max-width: 960px;
+        margin: 0 auto;
+    }
+
+    .tarjetero {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}

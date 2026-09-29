@@ -1,0 +1,9 @@
+#paisaje {
+    /* width: 100px; */
+}
+
+.imagen-pequena {
+    width: 150px;
+    /* height: 125px; */
+    border-radius: 6px;
+}

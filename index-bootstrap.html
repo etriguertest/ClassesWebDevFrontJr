@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejemplo responsive: Flexbox y Grid</title>
+
+  <!-- Bootstrap CSS  -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  
+</head>
+<body>
+  <header class="text-center">
+    <h1>Flexbox + Grid, mobile-first</h1>
+    <p>Reduce o amplia la ventana para ver como cambian las dos secciones.</p>
+  </header>
+  
+
+  <main class="seccion-flex py-4" >
+    <!-- Esta sección funciona con Flexbox -->
+    <section class="mb-5">
+      <h2>Sección Flexbox</h2>
+      <p>Barra de navegación: ampliada para movil, en fila desde tablet.</p>
+      <nav class="d-flex  flex-column gap-2">
+        <a class="btn btn-primary" href="#">Inicio</a>
+        <a class="btn btn-primary" href="#">Servicio</a>
+        <a class="btn btn-primary" href="#">Nosotros</a>
+        <a class="btn btn-primary" href="#">Contacto</a>
+      </nav>
+    </section>
+
+    <!-- Esta sección funciona con Grid -->
+    <section class="">
+      <h2>Sección Grid</h2>
+      <p>Tarjetas: 1 columna en movil, 2 col. en tablet y 3 en escritorio.</p>
+      <div class="row">
+        <div class="column">
+          <article class="bg-success">Tarjeta 1</article>
+          <article class="tarjeta">Tarjeta 2</article>
+          <article class="tarjeta">Tarjeta 3</article>
+          <article class="tarjeta">Tarjeta 4</article>
+          <article class="tarjeta">Tarjeta 5</article>
+          <article class="tarjeta">Tarjeta 6</article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- Bootstrap JS  -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
