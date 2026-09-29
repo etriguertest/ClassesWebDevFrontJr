@@ -1,0 +1,65 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #1b2430;
+    background-color: #f5f6f7;
+    line-height: 1.5;
+}
+
+header {
+    padding: 24px 20px;
+    border-bottom: 1px solid #dcdfe3;
+}
+
+header h1 {
+    font-size: 1.4rem;
+    margin-bottom: 8px; /* margin: 0 0 8px; */
+}
+
+header p {
+    color: #5b6572;
+}
+
+main {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+ /* Sección Flexbox: base móvil (apilado en una columna)*/
+.barra {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.barra a {
+    text-decoration: none;
+    color: #fff;
+    background-color: #3d5a80;
+    padding: 12px 16px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+
+/* Sección Grid: base móvil (apilado en una columna)*/
+.tarjetero {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px
+}
+
+.tarjeta {
+    background-color: #2f6f4f;
+    color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    text-align: center;
+}

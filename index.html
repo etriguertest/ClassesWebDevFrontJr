@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejemplo responsive: Flexbox y Grid</title>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Flexbox + Grid, mobile-first</h1>
+    <p>Reduce o amplia la ventana para ver como cambian las dos secciones.</p>
+  </header>
+  
+
+  <main>
+    <!-- Esta sección funciona con Flexbox -->
+    <section class="seccion-flex">
+      <h2>Sección Flexbox</h2>
+      <p>Barra de navegación: ampliada para movil, en fila desde tablet.</p>
+      <nav class="barra">
+        <a href="#">Inicio</a>
+        <a href="#">Servicio</a>
+        <a href="#">Nosotros</a>
+        <a href="#">Contacto</a>
+      </nav>
+    </section>
+
+    <!-- Esta sección funciona con Grid -->
+    <section class="seccion-grid">
+      <h2>Sección Grid</h2>
+      <p>Tarjetas: 1 columna en movil, 2 col. en tablet y 3 en escritorio.</p>
+      <div class="tarjetero">
+        <article class="tarjeta">Tarjeta 1</article>
+        <article class="tarjeta">Tarjeta 2</article>
+        <article class="tarjeta">Tarjeta 3</article>
+        <article class="tarjeta">Tarjeta 4</article>
+        <article class="tarjeta">Tarjeta 5</article>
+        <article class="tarjeta">Tarjeta 6</article>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>
