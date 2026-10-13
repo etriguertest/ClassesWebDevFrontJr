@@ -1,79 +1,59 @@
-document.addEventListener('DOMContentLoaded', function () {
-  let valorActual = '0';
-  let valorAnterior = '';
-  let operacion = null;
+let pantalla = document.getElementById('pantalla');
+let contenedor = document.getElementById('contenedor-botones');
 
-  let pantalla = document.getElementById('pantalla');
+let expresion = '';
 
-  function actualizarPantalla() {
-    pantalla.textContent = valorActual;
+// Delegación de eventos: escuchamos un solo evento en el contenedor
+contenedor.addEventListener('click', function (e) {
+  let boton = e.target.closest('button');
+  if (!boton) return; // Si no se hizo clic en un botón, no hace nada
+
+  let valor = boton.dataset.val;
+  let accion = boton.dataset.action;
+
+  // Botón Limpiar (C)
+  if (accion === 'clear') {
+    expresion = '';
+    pantalla.value = '0';
+    return;
   }
 
-  function agregarNumero(num) {
-    if (num === '.' && valorActual.includes('.')) return;
-    if (valorActual === '0' && num !== '.') {
-      valorActual = num;
+  // Botón Borrar (DEL)
+  if (accion === 'delete') {
+    expresion = expresion.slice(0, -1);
+    pantalla.value = expresion || '0';
+    return;
+  }
+
+  // Botón Igual (=)
+  if (accion === 'equal') {
+    try {
+      if (expresion.trim() !== '') {
+        // Evalúa la operación matemática de forma segura
+        let resultado = Function('"use strict"; return (' + expresion + ')')();
+        
+        if (!isFinite(resultado)) {
+          pantalla.value = 'Error';
+          expresion = '';
+        } else {
+          pantalla.value = resultado;
+          expresion = resultado.toString();
+        }
+      }
+    } catch (error) {
+      pantalla.value = 'Error';
+      expresion = '';
+    }
+    return;
+  }
+
+  // Entrada de Números u Operadores
+  if (valor) {
+    if (pantalla.value === '0' && valor !== '.') {
+      expresion = valor;
     } else {
-      valorActual += num;
+      expresion += valor;
     }
-    actualizarPantalla();
+    pantalla.value = expresion;
   }
-
-  function seleccionarOperacion(op) {
-    if (valorActual === '' && op !== '-') return;
-    if (valorAnterior !== '') calcular();
-    operacion = op;
-    valorAnterior = valorActual;
-    valorActual = '';
-  }
-
-  function calcular() {
-    let resultado;
-    let num1 = parseFloat(valorAnterior);
-    let num2 = parseFloat(valorActual);
-
-    if (isNaN(num1) || isNaN(num2)) return;
-
-    switch (operacion) {
-      case '+': resultado = num1 + num2; break;
-      case '-': resultado = num1 - num2; break;
-      case '*': resultado = num1 * num2; break;
-      case '/': resultado = num2 !== 0 ? num1 / num2 : 'Error'; break;
-      default: return;
-    }
-
-    valorActual = resultado.toString();
-    operacion = null;
-    valorAnterior = '';
-    actualizarPantalla();
-  }
-
-  function limpiar() {
-    valorActual = '0';
-    valorAnterior = '';
-    operacion = null;
-    actualizarPantalla();
-  }
-
-  function borrar() {
-    if (valorActual.length === 1 || valorActual === 'Error') {
-      valorActual = '0';
-    } else {
-      valorActual = valorActual.slice(0, -1);
-    }
-    actualizarPantalla();
-  }
-
-  // --- ASIGNACIÓN DE EVENTOS---- ---
-  document.querySelectorAll('.btn-numero').forEach(btn => {
-    btn.addEventListener('click', () => agregarNumero(btn.dataset.num));
-  });
-
-  document.querySelectorAll('.btn-operacion').forEach(btn => {
-    btn.addEventListener('click', () => seleccionarOperacion(btn.dataset.op));
-  });
-
-  document.getElementById('btn-igual').addEventListener('click', calcular);
-  document.getElementById('btn-limpiar').addEventListener('click', limpiar);
-  document.getElementById('btn-borrar').addEventListener('click', borrar);
 });
