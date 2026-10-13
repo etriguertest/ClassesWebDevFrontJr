@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
     actualizarPantalla();
   }
 
-  // --- ASIGNACIÓN DE EVENTOS ---
+  // --- ASIGNACIÓN DE EVENTOS---- ---
   document.querySelectorAll('.btn-numero').forEach(btn => {
     btn.addEventListener('click', () => agregarNumero(btn.dataset.num));
   });
