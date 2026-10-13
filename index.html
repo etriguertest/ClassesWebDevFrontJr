@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora Básica</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="calculator-card shadow-lg">
+    <div class="calculator-screen" id="pantalla">0</div>
+
+    <div class="calculator-buttons">
+      <button class="btn btn-danger col-span-2" id="btn-limpiar">C</button>
+      <button class="btn btn-secondary" id="btn-borrar">DEL</button>
+      <button class="btn btn-warning fw-bold btn-operacion" data-op="/">÷</button>
+
+      <button class="btn btn-light btn-numero" data-num="7">7</button>
+      <button class="btn btn-light btn-numero" data-num="8">8</button>
+      <button class="btn btn-light btn-numero" data-num="9">9</button>
+      <button class="btn btn-warning fw-bold btn-operacion" data-op="*">×</button>
+
+      <button class="btn btn-light btn-numero" data-num="4">4</button>
+      <button class="btn btn-light btn-numero" data-num="5">5</button>
+      <button class="btn btn-light btn-numero" data-num="6">6</button>
+      <button class="btn btn-warning fw-bold btn-operacion" data-op="-">-</button>
+
+      <button class="btn btn-light btn-numero" data-num="1">1</button>
+      <button class="btn btn-light btn-numero" data-num="2">2</button>
+      <button class="btn btn-light btn-numero" data-num="3">3</button>
+      <button class="btn btn-warning fw-bold btn-operacion" data-op="+">+</button>
+
+      <button class="btn btn-light col-span-2 btn-numero" data-num="0">0</button>
+      <button class="btn btn-light btn-numero" data-num=".">.</button>
+      <button class="btn btn-primary fw-bold" id="btn-igual">=</button>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
