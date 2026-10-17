@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (guess === numeroSecreto) {
       item.classList.add('list-group-item-success');
-      item.innerHTML = `<span>🎯 Propaste <strong>${guess}</strong></span> <span class="badge bg-success">¡CORRECTO!</span>`;
+      item.innerHTML = `<span>🎯 Probaste <strong>${guess}</strong></span> <span class="badge bg-success">¡CORRECTO!</span>`;
       historial.prepend(item);
 
       resultadoD3.classList.remove('d-none');
@@ -171,11 +171,11 @@ document.addEventListener('DOMContentLoaded', function () {
       inputGuess.disabled = true;
     } else if (guess < numeroSecreto) {
       item.classList.add('list-group-item-warning');
-      item.innerHTML = `<span>Propaste <strong>${guess}</strong></span> <span class="badge bg-warning text-dark">💡 El número es MÁS ALTO</span>`;
+      item.innerHTML = `<span>Probaste <strong>${guess}</strong></span> <span class="badge bg-warning text-dark">💡 El número es MÁS ALTO</span>`;
       historial.prepend(item);
     } else {
       item.classList.add('list-group-item-warning');
-      item.innerHTML = `<span>Propaste <strong>${guess}</strong></span> <span class="badge bg-warning text-dark">💡 El número es MÁS BAJO</span>`;
+      item.innerHTML = `<span>Probaste <strong>${guess}</strong></span> <span class="badge bg-warning text-dark">💡 El número es MÁS BAJO</span>`;
       historial.prepend(item);
     }
 
