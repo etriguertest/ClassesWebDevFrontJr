@@ -1,110 +1,96 @@
-// js/main.js — Coordinador principal: el único archivo que interactúa con el DOM
+// js/main.js — Coordinador: único archivo que toca el DOM
 import { obtenerPersonajes } from './api.js';
-import { filtrarPorEstado, filtrarPorNombre } from './procesadores.js';
+import {
+  transformarEnTarjetas,
+  filtrarPorEstado,
+  filtrarPorNombre,
+  buscarPorId
+} from './procesadores.js';
 
-// Elementos del DOM
-const contenedorTarjetas = document.getElementById('contenedor-tarjetas');
-const loadingSpinner = document.getElementById('loading');
+// Estado en memoria: los datos recibidos de la API
+let personajesGlobales = [];
+
+// Referencias al DOM
+const contenedor = document.getElementById('contenedor-tarjetas');
+const spinner = document.getElementById('loading');
 const alertaError = document.getElementById('alerta-error');
-const errorMensaje = document.getElementById('error-mensaje');
-const inputBusqueda = document.getElementById('input-busqueda');
-const selectEstado = document.getElementById('select-estado');
+const textoError = document.getElementById('error-mensaje');
 const btnCargar = document.getElementById('btn-cargar');
+const selectEstado = document.getElementById('select-estado');
+const inputBusqueda = document.getElementById('input-busqueda');
 
-// Estado local de los datos
-let todosLosPersonajes = [];
-
-// Sanitización de entradas para prevención de ataques XSS (Seguridad)
-const escaparHTML = (str = '') =>
-  str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
-
-// badges estéticos según el estado del personaje
-const obtenerBadgeEstado = (status) => {
-  if (status === 'Alive') return 'bg-success';
-  if (status === 'Dead') return 'bg-danger';
-  return 'bg-secondary';
+// Estado: cargando
+const alternarCarga = (cargando) => {
+  if (cargando) {
+    spinner.classList.remove('d-none');
+    contenedor.innerHTML = '';
+    alertaError.classList.add('d-none');
+  } else {
+    spinner.classList.add('d-none');
+  }
 };
 
-// Renderizado de las tarjetas en el DOM
-const renderizarTarjetas = (personajes) => {
-  if (personajes.length === 0) {
-    contenedorTarjetas.innerHTML = `
-      <div class="col-12 text-center py-4 text-secondary">
-        <p class="fs-5 mb-0">No se encontraron personajes que coincidan con los filtros.</p>
-      </div>
-    `;
+// Estado: error
+const mostrarError = (mensaje) => {
+  textoError.textContent = mensaje;
+  alertaError.classList.remove('d-none');
+  contenedor.innerHTML = '';
+};
+
+// Estado: éxito (o "sin resultados")
+const pintarPersonajes = (lista) => {
+  alertaError.classList.add('d-none');
+  if (lista.length === 0) {
+    contenedor.innerHTML = `
+      <div class="col-12 text-center py-5">
+        <p class="fs-4 text-warning">
+          No se encontraron personajes en esta dimensión 🛸
+        </p>
+      </div>`;
     return;
   }
-
-  contenedorTarjetas.innerHTML = personajes
-    .map(({ id, name, status, species, image, origin }) => `
-      <div class="col">
-        <div class="card h-100 bg-secondary bg-opacity-10 border-secondary shadow-sm" data-id="${id}">
-          <img src="${image}" class="card-img-top" alt="${escaparHTML(name)}" loading="lazy">
-          <div class="card-body">
-            <h5 class="card-title text-success fw-bold mb-2">${escaparHTML(name)}</h5>
-            <p class="card-text mb-1">
-              <span class="badge ${obtenerBadgeEstado(status)}">${escaparHTML(status)}</span>
-              <span class="text-secondary ms-1">• ${escaparHTML(species)}</span>
-            </p>
-            <p class="card-text small text-secondary">
-              <strong>Origen:</strong> ${escaparHTML(origin.name)}
-            </p>
-          </div>
-        </div>
-      </div>
-    `)
-    .join('');
+  contenedor.innerHTML = transformarEnTarjetas(lista);
 };
 
-// Aplicación combinada de los filtros en tiempo real
+// Aplicación combinada de filtros (Estado + Búsqueda por Nombre)
 const aplicarFiltros = () => {
   const estado = selectEstado.value;
   const texto = inputBusqueda.value;
 
-  const porEstado = filtrarPorEstado(todosLosPersonajes, estado);
+  const porEstado = filtrarPorEstado(personajesGlobales, estado);
   const resultadoFinal = filtrarPorNombre(porEstado, texto);
 
-  renderizarTarjetas(resultadoFinal);
+  pintarPersonajes(resultadoFinal);
 };
 
-// Carga inicial y manejo de los 3 estados (Cargando, Éxito, Error)
-const cargarDatos = async () => {
-  // Estado 1: Cargando
-  loadingSpinner.classList.remove('d-none');
-  alertaError.classList.add('d-none');
-  contenedorTarjetas.innerHTML = '';
-
+// Orquesta la carga: pide datos, guarda en memoria y pinta
+const cargarApp = async () => {
+  alternarCarga(true);
   try {
-    todosLosPersonajes = await obtenerPersonajes();
-    // Estado 3: Éxito
+    personajesGlobales = await obtenerPersonajes();
     aplicarFiltros();
   } catch (error) {
-    // Estado 2: Error
-    errorMensaje.textContent = error.message || 'No se pudo conectar con la Ciudadela.';
-    alertaError.classList.remove('d-none');
+    mostrarError(error.message);
   } finally {
-    loadingSpinner.classList.add('d-none');
+    // finally corre SIEMPRE: apaga el spinner con éxito o con fallo
+    alternarCarga(false);
   }
 };
 
-// Listeners de eventos
-inputBusqueda.addEventListener('input', aplicarFiltros);
+// Event Listeners
+btnCargar.addEventListener('click', cargarApp);
 selectEstado.addEventListener('change', aplicarFiltros);
-btnCargar.addEventListener('click', cargarDatos);
+inputBusqueda.addEventListener('input', aplicarFiltros);
 
-// Delegación de eventos en las tarjetas
-contenedorTarjetas.addEventListener('click', (evento) => {
+// Un solo listener en el contenedor para la selección (delegación de eventos)
+contenedor.addEventListener('click', (evento) => {
   const tarjeta = evento.target.closest('[data-id]');
-  if (!tarjeta) return;
-
-  const personajeId = tarjeta.dataset.id;
-  console.log(`Clic registrado en la tarjeta del personaje con ID: ${personajeId}`);
+  if (!tarjeta) {
+    return;
+  }
+  const personaje = buscarPorId(personajesGlobales, tarjeta.dataset.id);
+  console.log('Personaje seleccionado:', personaje);
 });
 
-// Inicialización
-cargarDatos();
+// Carga inicial al abrir la aplicación
+cargarApp();
