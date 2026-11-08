@@ -1,0 +1,179 @@
+/* ============================================================================
+   GHOSTNET TERMINAL V2 · ESTILOS DE INTERFAZ EN CAMPO
+   ============================================================================ */
+
+:root {
+  --bg-terminal: #070a10;
+  --bg-card: #0d121d;
+  --bg-input: #000000;
+  --accent-gold: #f59e0b;
+  --accent-gold-hover: #d97706;
+  --accent-green: #10b981;
+  --border-sidebar: #b45309;
+  --border-card: #1f2937;
+  --text-primary: #e5e7eb;
+  --text-muted: #9ca3af;
+}
+
+body {
+  background-color: var(--bg-terminal) !important;
+  color: var(--text-primary);
+  font-family: 'Courier New', Courier, monospace, SFMono-Regular, Menlo, Monaco, Consolas, sans-serif;
+  min-height: 100vh;
+}
+
+.text-gold {
+  color: var(--accent-gold) !important;
+  text-shadow: 0 0 6px rgba(245, 158, 11, 0.3);
+}
+
+.text-terminal-green {
+  color: var(--accent-green) !important;
+}
+
+/* Alertas de Terminal */
+.alert-terminal {
+  background-color: #12090b;
+  border: 1px solid #dc2626;
+  color: #fca5a5;
+  border-radius: 8px;
+  padding: 0.85rem 1.2rem;
+  font-size: 0.9rem;
+  box-shadow: 0 0 15px rgba(220, 38, 38, 0.25);
+  animation: fadeIn 0.25s ease-out;
+}
+
+.alert-terminal-warning {
+  background-color: #1a1307;
+  border-color: var(--accent-gold);
+  color: #fde047;
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.25);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Expediente y Paneles Laterales */
+.sidebar-recruitment {
+  background-color: #0a0e17;
+  border: 1px dashed var(--border-sidebar) !important;
+  border-radius: 8px;
+}
+
+.sidebar-recruitment .form-label {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 0.3rem;
+}
+
+/* Campos de Formulario */
+.form-control-terminal,
+.form-select-terminal {
+  background-color: var(--bg-input) !important;
+  border: 1px solid #374151 !important;
+  color: var(--text-primary) !important;
+  font-family: inherit;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+}
+
+.form-control-terminal:focus,
+.form-select-terminal:focus {
+  border-color: var(--accent-gold) !important;
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.4) !important;
+  outline: none;
+}
+
+.form-control-terminal::placeholder {
+  color: #4b5563;
+}
+
+/* Botones */
+.btn-gold {
+  background-color: var(--accent-gold) !important;
+  color: #000000 !important;
+  font-weight: 700;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.btn-gold:hover {
+  background-color: var(--accent-gold-hover) !important;
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.5);
+}
+
+.btn-outline-danger-custom {
+  background-color: transparent;
+  color: #ef4444;
+  border: 1px solid #7f1d1d;
+  transition: all 0.2s ease;
+}
+
+.btn-outline-danger-custom:hover {
+  background-color: rgba(239, 68, 68, 0.1);
+  border-color: #ef4444;
+  color: #fca5a5;
+}
+
+.btn-finalizada {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+/* Tarjetas de Agentes */
+.card-agente {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border-card) !important;
+  border-radius: 8px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.card-agente:hover {
+  transform: translateY(-2px);
+  border-color: #374151 !important;
+}
+
+/* Ítems de Lista de Misiones */
+.item-mision {
+  background-color: #05070c;
+  border: 1px solid #1f2937;
+  border-radius: 6px;
+  font-size: 0.8rem;
+}
+
+/* Badges */
+.badge-elite {
+  background-color: #dc2626 !important;
+  color: #ffffff !important;
+}
+
+.badge-veterano {
+  background-color: var(--accent-gold) !important;
+  color: #000000 !important;
+}
+
+.badge-operativo {
+  background-color: #06b6d4 !important;
+  color: #000000 !important;
+}
+
+.badge-total {
+  background-color: #374151;
+  color: #d1d5db;
+  font-size: 0.8rem;
+}
+
+footer {
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+}
