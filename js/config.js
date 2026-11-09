@@ -1,4 +1,4 @@
-// js/config.js — Configuración global del proyecto
+// js/config.js — Configuración centralizada de la API
 const CONFIG = {
   urlApi: 'https://rickandmortyapi.com/api/character'
 };

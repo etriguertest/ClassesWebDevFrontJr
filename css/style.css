@@ -1,0 +1,49 @@
+/* ============================================================================
+   RICK & MORTY PORTAL FINDER - STYLES + OPTIMIZACIÓN DE IMÁGENES
+   ============================================================================ */
+
+/* Transición suave para las tarjetas dinámicas */
+.card-personaje {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.card-personaje:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(25, 135, 84, 0.3) !important;
+  border-color: #198754 !important;
+}
+
+/* Aspect ratio y placeholder visual neutro mientras la imagen se descarga */
+.card-img-top {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background-color: #212529; /* Reserva de espacio anti-saltos (CLS) */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Estilos para el botón de favoritos */
+.btn-favorito {
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-favorito[aria-pressed="true"] {
+  box-shadow: 0 0 10px rgba(255, 193, 7, 0.4);
+}
+
+/* Modal personalizado */
+.modal-body img {
+  max-height: 240px;
+  object-fit: cover;
+  background-color: #212529;
+  border: 2px solid #198754;
+}
+
+/* Animación para el título */
+.portal-title {
+  text-shadow: 0 0 12px rgba(25, 135, 84, 0.4);
+}
+
+/* Spinner personalizado */
+.spinner-portal {
+  filter: drop-shadow(0 0 8px #198754);
+}

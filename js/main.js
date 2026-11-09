@@ -1,4 +1,4 @@
-// js/main.js — Coordinador principal: manipulación del DOM y orquestación
+// js/main.js — Coordinador principal
 import { obtenerPersonajes } from './api.js';
 import {
   transformarEnTarjetas,
@@ -10,13 +10,13 @@ import {
   escaparHTML
 } from './procesadores.js';
 
-// ===== Estado en memoria =====
+// ===== Estado de la Aplicación =====
 let personajesGlobales = [];
 let favoritosIds = [];
 let paginaActual = 1;
 let totalPaginas = 1;
 
-// ===== Referencias al DOM =====
+// ===== Referencias Seguras al DOM =====
 const contenedor = document.getElementById('contenedor-tarjetas');
 const spinner = document.getElementById('loading');
 const alertaError = document.getElementById('alerta-error');
@@ -34,11 +34,11 @@ const modalDetalle = document.getElementById('modal-detalle');
 const modalNombre = document.getElementById('modal-nombre');
 const modalCuerpo = document.getElementById('modal-cuerpo');
 
-// ===== Paginación y control de errores =====
+// ===== Paginación y Errores =====
 const actualizarPaginacion = (cargando) => {
-  indicadorPagina.textContent = `Página ${paginaActual} de ${totalPaginas}`;
-  btnAnterior.disabled = cargando || paginaActual === 1;
-  btnSiguiente.disabled = cargando || paginaActual === totalPaginas;
+  if (indicadorPagina) indicadorPagina.textContent = `Página ${paginaActual} de ${totalPaginas}`;
+  if (btnAnterior) btnAnterior.disabled = cargando || paginaActual === 1;
+  if (btnSiguiente) btnSiguiente.disabled = cargando || paginaActual === totalPaginas;
 };
 
 const mensajeAmigable = (error) => {
@@ -48,28 +48,30 @@ const mensajeAmigable = (error) => {
   return error.message;
 };
 
-// ===== Control de Estados Visuales =====
+// ===== Renderizado de Estados =====
 const alternarCarga = (cargando) => {
   if (cargando) {
-    spinner.classList.remove('d-none');
-    contenedor.innerHTML = '';
-    alertaError.classList.add('d-none');
+    spinner?.classList.remove('d-none');
+    if (contenedor) contenedor.innerHTML = '';
+    alertaError?.classList.add('d-none');
   } else {
-    spinner.classList.add('d-none');
+    spinner?.classList.add('d-none');
   }
-  btnCargar.disabled = cargando;
+  if (btnCargar) btnCargar.disabled = cargando;
   actualizarPaginacion(cargando);
 };
 
 const mostrarError = (mensaje) => {
-  textoError.textContent = mensaje;
-  alertaError.classList.remove('d-none');
-  contenedor.innerHTML = '';
-  resumen.textContent = '';
+  if (textoError) textoError.textContent = mensaje;
+  alertaError?.classList.remove('d-none');
+  if (contenedor) contenedor.innerHTML = '';
+  if (resumen) resumen.textContent = '';
 };
 
 const pintarPersonajes = (lista) => {
-  alertaError.classList.add('d-none');
+  alertaError?.classList.add('d-none');
+  if (!contenedor) return;
+
   if (lista.length === 0) {
     contenedor.innerHTML = `
       <div class="col-12 text-center py-5">
@@ -85,31 +87,35 @@ const pintarPersonajes = (lista) => {
 
 // ===== Filtros Combinados =====
 const ejecutarFiltros = () => {
-  const estado = selectEstado.value;
+  const estado = selectEstado?.value || 'todos';
+  const textoBusqueda = inputBusqueda?.value || '';
+
   const filtrados = filtrarPersonajesCombinado(
     personajesGlobales,
-    inputBusqueda.value,
+    textoBusqueda,
     estado
   );
 
   pintarPersonajes(filtrados);
 
-  let texto = `Mostrando ${filtrados.length} de ${personajesGlobales.length}`;
-  if (estado !== 'todos' && !existeConEstado(personajesGlobales, estado)) {
-    texto = `${texto} · ⚠️ En esta lista no hay personajes con estado ${estado}`;
+  if (resumen) {
+    let texto = `Mostrando ${filtrados.length} de ${personajesGlobales.length}`;
+    if (estado !== 'todos' && !existeConEstado(personajesGlobales, estado)) {
+      texto = `${texto} · ⚠️ En esta lista no hay personajes con estado ${estado}`;
+    }
+    resumen.textContent = texto;
   }
-  resumen.textContent = texto;
 };
 
 // ===== Gestión de Favoritos =====
 const actualizarContador = () => {
-  contadorFavoritos.textContent = `⭐ Favoritos: ${favoritosIds.length}`;
+  if (contadorFavoritos) {
+    contadorFavoritos.textContent = `⭐ Favoritos: ${favoritosIds.length}`;
+  }
 };
 
 const manejarFavorito = (id) => {
-  const anterior = personajesGlobales;
   personajesGlobales = alternarFavorito(personajesGlobales, id);
-  
   ejecutarFiltros();
 
   const personaje = buscarPorId(personajesGlobales, id);
@@ -119,11 +125,10 @@ const manejarFavorito = (id) => {
     favoritosIds = favoritosIds.filter((idGuardado) => idGuardado !== personaje.id);
   }
 
-  console.log('¿Arreglo nuevo?', anterior !== personajesGlobales);
   actualizarContador();
 };
 
-// ===== Modal Ficha Técnica =====
+// ===== Ficha Técnica =====
 const abrirFicha = (id) => {
   const personaje = buscarPorId(personajesGlobales, id);
   if (!personaje) return;
@@ -138,20 +143,32 @@ const abrirFicha = (id) => {
     episode = []
   } = personaje;
 
-  modalNombre.textContent = name;
-  modalCuerpo.innerHTML = `
-    <img src="${escaparHTML(image)}" class="img-fluid rounded mb-3" alt="${escaparHTML(name)}">
-    <p class="mb-1"><strong>Estado:</strong> ${escaparHTML(status)}</p>
-    <p class="mb-1"><strong>Especie:</strong> ${escaparHTML(species)}</p>
-    <p class="mb-1"><strong>Origen:</strong> ${escaparHTML(origin.name)}</p>
-    <p class="mb-1"><strong>Género:</strong> ${escaparHTML(gender)}</p>
-    <p class="mb-0"><strong>Episodios:</strong> ${episode.length}</p>
-  `;
+  if (modalNombre) modalNombre.textContent = name;
+  if (modalCuerpo) {
+    modalCuerpo.innerHTML = `
+      <img 
+        src="${escaparHTML(image)}" 
+        class="img-fluid rounded mb-3" 
+        alt="${escaparHTML(name)}"
+        loading="lazy"
+        decoding="async"
+        width="300"
+        height="300"
+      >
+      <p class="mb-1"><strong>Estado:</strong> ${escaparHTML(status)}</p>
+      <p class="mb-1"><strong>Especie:</strong> ${escaparHTML(species)}</p>
+      <p class="mb-1"><strong>Origen:</strong> ${escaparHTML(origin.name)}</p>
+      <p class="mb-1"><strong>Género:</strong> ${escaparHTML(gender)}</p>
+      <p class="mb-0"><strong>Episodios:</strong> ${episode.length}</p>
+    `;
+  }
 
-  bootstrap.Modal.getOrCreateInstance(modalDetalle).show();
+  if (modalDetalle) {
+    bootstrap.Modal.getOrCreateInstance(modalDetalle).show();
+  }
 };
 
-// ===== Carga de Datos por Página =====
+// ===== Carga Principal =====
 const cargarPagina = async (pagina) => {
   alternarCarga(true);
   try {
@@ -167,16 +184,16 @@ const cargarPagina = async (pagina) => {
   }
 };
 
-// ===== Listeners de Eventos =====
-selectEstado.addEventListener('change', ejecutarFiltros);
-inputBusqueda.addEventListener('input', ejecutarFiltros);
-btnAnterior.addEventListener('click', () => cargarPagina(paginaActual - 1));
-btnSiguiente.addEventListener('click', () => cargarPagina(paginaActual + 1));
-btnCargar.addEventListener('click', () => cargarPagina(paginaActual));
-btnReintentar.addEventListener('click', () => cargarPagina(paginaActual));
+// ===== Asignación Segura de Listeners =====
+selectEstado?.addEventListener('change', ejecutarFiltros);
+inputBusqueda?.addEventListener('input', ejecutarFiltros);
+btnAnterior?.addEventListener('click', () => cargarPagina(paginaActual - 1));
+btnSiguiente?.addEventListener('click', () => cargarPagina(paginaActual + 1));
+btnCargar?.addEventListener('click', () => cargarPagina(paginaActual));
+btnReintentar?.addEventListener('click', () => cargarPagina(paginaActual));
 
-// Delegación de eventos en el contenedor dinámico
-contenedor.addEventListener('click', (evento) => {
+// Delegación de eventos en el contenedor principal
+contenedor?.addEventListener('click', (evento) => {
   const tarjeta = evento.target.closest('[data-id]');
   if (!tarjeta) return;
 
@@ -188,6 +205,6 @@ contenedor.addEventListener('click', (evento) => {
   }
 });
 
-// ===== Inicio de la Aplicación =====
+// Inicialización
 actualizarContador();
 cargarPagina(1);
