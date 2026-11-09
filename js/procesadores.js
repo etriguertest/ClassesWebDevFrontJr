@@ -1,7 +1,6 @@
-// js/procesadores.js — Funciones puras: reciben datos y devuelven datos.
-// Regla: aquí NO se toca el DOM.
+// js/procesadores.js — Funciones puras (sin manipulación del DOM)
 
-// Convierte texto externo en texto seguro para usar con innerHTML
+// Previene vulnerabilidades XSS sanitizando cadenas HTML
 export const escaparHTML = (texto) =>
   String(texto)
     .replace(/&/g, '&amp;')
@@ -9,7 +8,7 @@ export const escaparHTML = (texto) =>
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
 
-// Devuelve la clase de color de Bootstrap según el estado
+// Retorna clases CSS de Bootstrap según el estado del personaje
 export const claseEstado = (status) => {
   if (status === 'Alive') {
     return 'bg-success';
@@ -19,11 +18,11 @@ export const claseEstado = (status) => {
   return 'bg-secondary';
 };
 
-// map: transforma cada personaje en el HTML de su tarjeta
+// Transforma una lista de personajes en elementos HTML formateados
 export const transformarEnTarjetas = (personajes) =>
   personajes
     .map(
-      ({ id, name, status, species, image, origin }) => `
+      ({ id, name, status, species, image, origin, favorito = false }) => `
       <div class="col" data-id="${id}">
         <div class="card h-100 bg-secondary bg-opacity-25 border-secondary">
           <img src="${escaparHTML(image)}" class="card-img-top" alt="${escaparHTML(name)}" loading="lazy">
@@ -37,9 +36,17 @@ export const transformarEnTarjetas = (personajes) =>
                 ${escaparHTML(species)}
               </span>
             </div>
-            <p class="card-text text-secondary small mt-auto mb-0">
+            <p class="card-text text-secondary small mb-2">
               <strong>Origen:</strong> ${escaparHTML(origin.name)}
             </p>
+            <div class="d-flex gap-2 mt-auto">
+              <button class="btn btn-sm ${favorito ? 'btn-warning' : 'btn-outline-warning'} btn-favorito" aria-pressed="${favorito}">
+                ${favorito ? '★ Favorito' : '☆ Marcar'}
+              </button>
+              <button class="btn btn-sm btn-outline-info btn-detalle">
+                Ver ficha
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -47,24 +54,35 @@ export const transformarEnTarjetas = (personajes) =>
     )
     .join('');
 
-// filter: por estado ('todos' devuelve una copia de la lista completa)
-export const filtrarPorEstado = (personajes, estado) => {
-  if (estado === 'todos') {
-    return [...personajes];
-  }
-  return personajes.filter(({ status }) => status === estado);
-};
+// Determina si existe al menos un elemento con el estado indicado (.some)
+export const existeConEstado = (personajes, estado) =>
+  personajes.some(({ status }) => status === estado);
 
-// filter: por coincidencia en el nombre (sin importar mayúsculas)
-export const filtrarPorNombre = (personajes, texto) => {
+// Filtra la lista aplicando búsqueda por texto y por estado simultáneamente
+export const filtrarPersonajesCombinado = (lista, texto, estado) => {
   const termino = texto.toLowerCase().trim();
-  return personajes.filter(({ name }) => name.toLowerCase().includes(termino));
+  return lista
+    .filter(({ name }) => name.toLowerCase().includes(termino))
+    .filter(({ status }) => estado === 'todos' || status === estado);
 };
 
-// find: un personaje por id (el id puede llegar como texto)
+// Busca un personaje por ID dentro del arreglo (.find)
 export const buscarPorId = (personajes, id) =>
   personajes.find((personaje) => personaje.id === Number(id));
 
-// some: ¿existe al menos un personaje con ese estado?
-export const existeConEstado = (personajes, estado) =>
-  personajes.some(({ status }) => status === estado);
+// Invierte de forma inmutable la propiedad 'favorito' usando map + spread
+export const alternarFavorito = (personajes, id) => {
+  return personajes.map((personaje) => {
+    if (personaje.id === Number(id)) {
+      return { ...personaje, favorito: !personaje.favorito };
+    }
+    return personaje;
+  });
+};
+
+// Sincroniza la lista devuelta por la API con el arreglo de IDs guardados como favoritos
+export const marcarFavoritos = (personajes, idsFavoritos) =>
+  personajes.map((personaje) => ({
+    ...personaje,
+    favorito: idsFavoritos.includes(personaje.id)
+  }));
