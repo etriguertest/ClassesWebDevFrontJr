@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal de Inteligencia - Protocolo Sombra</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main id="terminal" class="terminal-contenedor">
+        <!-- Encabezado de la Terminal -->
+        <header class="terminal-header">
+            <div class="luces-estado">
+                <span class="luz rojo"></span>
+                <span class="luz amarillo"></span>
+                <span class="luz verde"></span>
+            </div>
+            <h1 class="titulo-terminal">AGENCIA DE INTELIGENCIA // TERMINAL DOM</h1>
+            <span id="badge-estado" class="badge">ESTADO: NORMAL</span>
+        </header>
+
+        <!-- Panel de Control y Estado de Alerta -->
+        <section class="panel-seccion">
+            <h2>01. Protocolo de Seguridad</h2>
+            <p>Modifica el nivel de alarma del cuartel general.</p>
+            <button id="btn-alerta" class="btn btn-peligro">Alternar Alerta Roja</button>
+        </section>
+
+        <!-- Archivo Clasificado: Mostrar / Ocultar -->
+        <section class="panel-seccion">
+            <h2>02. Expedientes Confidenciales</h2>
+            <button id="btn-revelar" class="btn btn-accion">Revelar Archivo Clasificado</button>
+            <div id="mensaje-secreto" class="caja-secreta oculto">
+                <h3>[EXPEDIENTE ULTRASECRETO: OPERACIÓN HALCÓN]</h3>
+                <p>Las coordenadas del objetivo son: <strong>13°41'56"N 89°11'24"W</strong>. El informante espera en la cafetería del sector 4 portando una carpeta amarilla.</p>
+            </div>
+        </section>
+
+        <!-- Decodificador en Tiempo Real -->
+        <section class="panel-seccion">
+            <h2>03. Verificador de Credencial Táctica</h2>
+            <label for="input-credencial">Ingrese clave de descifrado (Pista: <code>DELTA7</code>):</label>
+            <input type="password" id="input-credencial" class="input-control" placeholder="Clave de acceso...">
+            <p id="feedback-clave" class="mensaje-feedback"></p>
+        </section>
+
+        <!-- Despacho de Misiones -->
+        <section class="panel-seccion">
+            <h2>04. Bitácora de Despacho de Operaciones</h2>
+            <form id="form-mision" class="form-mision">
+                <input type="text" id="input-mision" class="input-control" placeholder="Describa nueva directiva encubierta...">
+                <button type="submit" id="btn-despachar" class="btn btn-accion">Despachar Misión</button>
+            </form>
+            <ul id="lista-misiones" class="lista-misiones">
+                <li class="item-mision">Misión alfa: Asegurar el perímetro del puerto.</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Conexión del script -->
+    <script src="script.js"></script>
+</body>
+</html>
