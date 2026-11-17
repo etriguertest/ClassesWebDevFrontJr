@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daniela Hernández — Desarrolladora Frontend Jr.</title>
+  
+  <!-- Tipografías de Google Fonts: Space Grotesk e Inter -->
+  <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"> -->
+
+  <!-- Hoja de estilos externa (Mobile First) -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ENCABEZADO / HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="prompt">daniela@frontend:~$ whoami</p>
+      <h1>Daniela Hernández Portillo</h1>
+      <p>Desarrolladora Frontend Jr. — construyo interfaces claras, rápidas y que funcionan igual de bien en un teléfono que en una pantalla grande.</p>
+      <p>San Salvador, El Salvador · Disponible para trabajo remoto o híbrido</p>
+      <div>
+        <a href="#proyectos">Ver proyectos</a>
+        <a href="mailto:daniela.hernandez@correo.com">Escribirme</a>
+      </div>
+      <div>
+        <a href="#" target="_blank">GitHub</a>
+        <a href="#" target="_blank">LinkedIn</a>
+        <a href="mailto:daniela.hernandez@correo.com">daniela.hernandez@correo.com</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECCIÓN: SOBRE MÍ (Bug de .about corregido en HTML) -->
+  <section>
+    <div>
+      <img src="https://i.pravatar.cc/300?img=38" alt="Foto de perfil de Daniela Hernández">
+      <div>
+        <h2>Sobre mí</h2>
+        <p>Vengo del diseño gráfico y el marketing digital, así que entiendo tanto el "cómo se ve" como el "por qué se ve así". Después de años maquetando en herramientas de diseño, decidí aprender a construirlo yo misma en código.</p>
+        <p>Hoy estoy terminando mi formación como Web Developer Frontend, enfocada en HTML semántico, CSS moderno (Flexbox y Grid) y buenas prácticas de accesibilidad. Me interesa el detalle: espaciados consistentes, contraste correcto, y que una página se sienta tan cuidada en el código como en la pantalla.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: HABILIDADES -->
+  <section>
+    <div>
+      <h2>Habilidades</h2>
+      <div>
+        <div>
+          <h3>Lenguajes y herramientas</h3>
+          <div>
+            <span>HTML5</span>
+            <span>CSS3</span>
+            <span>Git &amp; GitHub</span>
+            <span>VS Code</span>
+            <span>JavaScript (en formación)</span>
+          </div>
+        </div>
+        <div>
+          <h3>Diseño y maquetado</h3>
+          <div>
+            <span>Flexbox</span>
+            <span>CSS Grid</span>
+            <span>Diseño responsivo</span>
+            <span>De Figma a código</span>
+          </div>
+        </div>
+        <div>
+          <h3>Habilidades blandas</h3>
+          <div>
+            <span>Atención al detalle</span>
+            <span>Comunicación clara</span>
+            <span>Trabajo en equipo</span>
+            <span>Aprendizaje autónomo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: PROYECTOS -->
+  <section>
+    <div>
+      <div>
+        <h2>Proyectos</h2>
+        <p>Prácticas del bootcamp, ya subidas y navegables</p>
+      </div>
+      <div>
+        <article class="project-card">
+          <h3>Portafolio personal</h3>
+          <p>Este mismo sitio: estructura semántica en HTML5 y layout con Flexbox y Grid, sin frameworks.</p>
+          <div>
+            <span>HTML5</span>
+            <span>CSS3</span>
+            <span>Grid</span>
+          </div>
+          <div>
+            <a href="#" target="_blank">Ver código</a>
+            <a href="#" target="_blank">Ver demo</a>
+          </div>
+        </article>
+
+        <article>
+          <h3>Landing page — cafetería ficticia</h3>
+          <p>Réplica de una landing real a partir de una captura, cuidando jerarquía visual y espaciado con Emmet + CSS puro.</p>
+          <div>
+            <span>HTML5</span>
+            <span>CSS3</span>
+            <span>Emmet</span>
+          </div>
+          <div>
+            <a href="#" target="_blank">Ver código</a>
+            <a href="#" target="_blank">Ver demo</a>
+          </div>
+        </article>
+
+        <article>
+          <h3>Galería responsiva de productos</h3>
+          <p>Grilla de tarjetas con <code>repeat(auto-fit, minmax())</code> que se reacomoda sola entre celular y escritorio.</p>
+          <div>
+            <span>CSS Grid</span>
+            <span>Responsive</span>
+          </div>
+          <div>
+            <a href="#" target="_blank">Ver código</a>
+            <a href="#" target="_blank">Ver demo</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: TRAYECTORIA -->
+  <section>
+    <div>
+      <h2>Mi camino</h2>
+      <div>
+        <div>
+          <span>Módulo 1</span>
+          <h3>Fundamentos: HTML, CSS y Bootstrap</h3>
+          <p>Estructura semántica, Flexbox, Grid y mi primera landing page responsiva.</p>
+        </div>
+        <div>
+          <span>Módulo 2 — en curso</span>
+          <h3>Fundamentos de JavaScript</h3>
+          <p>Lógica, funciones, arrays y objetos para empezar a darle comportamiento a mis páginas.</p>
+        </div>
+        <div>
+          <span>Módulo 3</span>
+          <h3>Git, GitHub y JavaScript avanzado</h3>
+          <p>Control de versiones en equipo, manipulación del DOM y consumo de APIs reales.</p>
+        </div>
+        <div>
+          <span>Módulo 4</span>
+          <h3>React</h3>
+          <p>Componentes, estado y una aplicación final para cerrar el bootcamp.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: CONTACTO -->
+  <section>
+    <div>
+      <div>
+        <h2>¿Buscas sumar a alguien a tu equipo de frontend?</h2>
+        <p>Estoy activamente en búsqueda de mi primera oportunidad como desarrolladora.</p>
+      </div>
+      <div>
+        <a href="mailto:daniela.hernandez@correo.com">daniela.hernandez@correo.com</a>
+        <a href="#" target="_blank">linkedin.com/in/danielahernandez</a>
+        <a href="#" target="_blank">github.com/danielahz</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PIE DE PÁGINA -->
+  <footer>&copy; 2026 Daniela Hernández — Hecho con HTML5 y CSS3, sin frameworks</footer>
+
+</body>
+</html>

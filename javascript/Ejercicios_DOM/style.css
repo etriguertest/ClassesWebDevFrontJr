@@ -1,0 +1,219 @@
+:root {
+    --bg-fondo: #0a0e14;
+    --bg-terminal: #0f1724;
+    --color-texto: #b3c2d4;
+    --color-resalte: #00e5ff;
+    --color-exito: #00ff9d;
+    --color-alerta: #ff3366;
+    --color-borde: #1e2d42;
+    --fuente-mono: 'Consolas', 'Courier New', monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-fondo);
+    color: var(--color-texto);
+    font-family: var(--fuente-mono);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Contenedor tipo Terminal */
+.terminal-contenedor {
+    width: 100%;
+    max-width: 780px;
+    background-color: var(--bg-terminal);
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.7);
+    padding: 25px;
+    transition: all 0.3s ease;
+}
+
+/* Cabecera */
+.terminal-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    border-bottom: 1px solid var(--color-borde);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.luces-estado {
+    display: flex;
+    gap: 6px;
+}
+
+.luz {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.luz.rojo { background-color: #ff5f56; }
+.luz.amarillo { background-color: #ffbd2e; }
+.luz.verde { background-color: #27c93f; }
+
+.titulo-terminal {
+    font-size: 1.1rem;
+    color: var(--color-resalte);
+    letter-spacing: 1px;
+}
+
+.badge {
+    background-color: #14253d;
+    color: var(--color-resalte);
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--color-resalte);
+}
+
+/* Secciones */
+    .panel-seccion {
+    margin-bottom: 22px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.02);
+    border-left: 3px solid var(--color-resalte);
+    border-radius: 0 4px 4px 0;
+}
+
+.panel-seccion h2 {
+    font-size: 0.95rem;
+    color: #ffffff;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.panel-seccion p, label {
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* Botones */
+.btn {
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 0.85rem;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-peligro {
+    background-color: var(--color-alerta);
+    color: #ffffff;
+}
+
+.btn-accion {
+    background-color: var(--color-resalte);
+    color: #050a10;
+}
+
+/* Controles de Entrada */
+.input-control {
+    width: 100%;
+    padding: 8px 12px;
+    background-color: #080d14;
+    border: 1px solid var(--color-borde);
+    color: #ffffff;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.input-control:focus {
+    outline: none;
+    border-color: var(--color-resalte);
+}
+
+/* Mensaje Confidencial */
+.caja-secreta {
+    margin-top: 12px;
+    padding: 12px;
+    background-color: #16241a;
+    border: 1px dashed var(--color-exito);
+    color: var(--color-exito);
+    border-radius: 4px;
+    animation: abrirArchivo 0.4s ease;
+}
+
+.caja-secreta h3 {
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+}
+
+/* Bitácora de Misiones */
+.form-mision {
+    display: flex;
+    gap: 8px;
+}
+
+.form-mision .input-control {
+    margin-bottom: 0;
+}
+
+.lista-misiones {
+    list-style: none;
+    margin-top: 12px;
+}
+
+.item-mision {
+    background-color: #0a111a;
+    border: 1px solid #162233;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-top: 6px;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+}
+
+.item-mision::before {
+    content: "▸";
+    color: var(--color-resalte);
+    margin-right: 8px;
+}
+
+/* ========================================================
+CLASES DINÁMICAS MANIPULADAS POR JAVASCRIPT
+======================================================== */
+.oculto {
+    display: none !important;
+}
+
+.alerta-roja {
+    border-color: var(--color-alerta) !important;
+    box-shadow: 0 0 25px rgba(255, 51, 102, 0.4) !important;
+}
+
+.alerta-roja .badge {
+    background-color: var(--color-alerta) !important;
+    border-color: #ffffff !important;
+    color: #ffffff !important;
+    }
+
+@keyframes abrirArchivo {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+}

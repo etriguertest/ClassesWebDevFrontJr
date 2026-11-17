@@ -1,2 +1,2 @@
-# ClassesWebDevFrontJr
-Repo creado para practicas de clases FrontDevJr
+# WDFRT1
+Repositorio de códigos de ejemplo

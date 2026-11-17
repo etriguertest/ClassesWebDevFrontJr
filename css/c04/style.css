@@ -1,0 +1,66 @@
+/* Importar letras de Google */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@300..700&display=swap');
+
+/*
+   FASE 1: VARIABLES CSS (CUSTOM PROPERTIES)
+   :root representa el elemento raíz (<html>).
+   Centralizamos la paleta de colores y las familias tipográficas para 
+   asegurar consistencia visual y facilitar el mantenimiento global.
+*/
+:root {
+    /* 
+    Formato:               # R G B
+    hexadecimal en colores #000000
+    Numeros van en hexadecimal del 0, 1, ..., 9, A, B, ... F
+    */
+    /* Paleta cromática corporativa / de marca */
+    --ink: #0c1420;          /* Azul petróleo oscuro: fondos principales del hero y footer */
+    --ink-soft: #1c2838;     /* Tono intermedio oscuro: bordes y contrastes secundarios */
+    --paper: #eef1f5;        /* Fondo gris claro suave: base neutra para lectura cómoda */
+    --card: #ffffff;         /* Blanco puro: contenedores de contenido y tarjetas */
+    --text: #1c2430;         /* Color principal del texto: alto contraste y legibilidad */
+    --text-muted: #5b6572;   /* Gris medio: textos secundarios, metadatos y descripciones */
+
+    /* Colores de acento e interacción */
+    --accent: #ffb703;       /* Amarillo ámbar: llamadas a la acción principales (CTA) y cursores */
+    --accent-2: #06a77d;     /* Verde esmeralda: enlaces activos, bordes y acentos visuales */
+    --line: #dde2e8;         /* Gris claro suave: separadores, divisores y bordes sutiles */
+
+    /* Tipografías */
+    --font-display: 'Space Grotesk', sans-serif; /* Tipografía para encabezados (h1, h2, h3) */
+    --font-body: 'Inter', sans-serif;           /* Tipografía neutra y legible para texto corrido */
+}
+
+/*
+   FASE 2: RESET DE NAVEGADOR Y ACCESIBILIDAD
+   Reglas globales para eliminar comportamientos inconsistentes entre navegadores.
+*/
+
+/* box-sizing: border-box asegura que padding y border no aumenten el ancho total.
+   margin: 0 y padding: 0 eliminan los márgenes por defecto de etiquetas como body, p, h1, etc. */
+* , *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Desplazamiento animado suave al navegar por anclas (#proyectos) */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Configuración básica del cuerpo del documento */
+body {
+    font-family: var(--font-body);
+    color: var(--text);
+    background-color: var(--paper);
+}
+
+/*
+    SECCIÓN HERO (PORTADA / TERMINAL)
+*/
+.hero {
+    background-color: rgb(8, 8, 70);
+    color: #f4f6f8;
+    padding: 80px 20px 64px;
+}
