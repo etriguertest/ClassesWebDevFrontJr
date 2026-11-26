@@ -1,0 +1,49 @@
+/* Fondo degradado con puntitos. Se aplica al contenedor principal de App */
+.fondo-juego {
+  background-color: #4f46e5;
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.16) 1.5px, transparent 1.5px),
+    linear-gradient(135deg, #3b82f6 0%, #6366f1 50%, #8b5cf6 100%);
+  background-size: 24px 24px, 100% 100%;
+}
+
+/* Tarjeta con borde grueso y sombra, como un tablero de juego */
+.tarjeta-tablero {
+  border: 3px solid #1e1b4b !important;
+  box-shadow: 0 10px 0 #1e1b4b, 0 20px 30px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Animación: sube y baja 6 px (la usa el banner 3D) */
+@keyframes flotar {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.titulo-3d-flotante {
+  animation: flotar 3.2s ease-in-out infinite;
+  filter: drop-shadow(0 10px 12px rgba(0, 0, 0, 0.15));
+  transition: transform 0.25s ease;
+}
+
+.titulo-3d-flotante:hover {
+  transform: scale(1.03) translateY(-4px);
+}
+
+/* Animación: el puño sube y baja, como golpeando al ritmo del canto */
+@keyframes golpeMano {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-16px) scale(1.08);
+  }
+}
+
+.mano-cantando {
+  display: inline-block;
+  animation: golpeMano 0.35s ease-in-out infinite;
+}
